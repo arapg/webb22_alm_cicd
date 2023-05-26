@@ -29,17 +29,17 @@ jobs:
       - name: Run linting
         run: npm run lint
     
-    faked-deploy:
-      runs-on: ubuntu-latest
+  faked-deploy:
+    runs-on: ubuntu-latest
 
-      steps:
-        - name: Checkout code
-          uses: actions/checkout@v2
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
 
-        - name: Faked Deploy
-          run: |
-            if [[ ${{ github.ref }} == 'refs/heads/main' ]]; then
-              echo "now deploying to production"
-            else
-              echo "now deploying branch: ${{ github.ref }} to the test server"
-            fi
+      - name: Faked Deploy
+        run: |
+          if [[ ${{ github.ref }} == 'refs/heads/main' ]]; then
+            echo "now deploying to production"
+          else
+            echo "now deploying branch: ${{ github.ref }} to the test server"
+          fi
