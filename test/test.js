@@ -18,4 +18,12 @@ describe('Calculator', () => {
     calc.add(3);
     assert.equal(calc.getResult(), 5);
   });
+
+  it('should return -1 when 3 is subtracted from 2', () => {
+    const calc = new Calculator();
+
+    calc.add(2);
+    calc.subtract(3);
+    assert.equal(calc.getResult(), -1);
+  });
 });
