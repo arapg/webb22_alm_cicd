@@ -1,6 +1,6 @@
 const assert = require('assert');
 
-const { Calculator } = require('../routes/calc');
+const { Calculator } = require('../../routes/calc');
 
 describe('Calculator', function () {
   it('should return 5 when 2 and 3 are added', function () {
