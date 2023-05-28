@@ -14,7 +14,7 @@ jobs:
         run: npm install
 
       - name: Run unit tests
-        run: npm run test
+        run: npm test
 
   linting:
     runs-on: ubuntu-latest
@@ -39,11 +39,11 @@ jobs:
       - name: Faked Deploy to Main
         if: ${{ github.ref == 'refs/heads/main' }}
         run: |
-          "set NODE_ENV=production"
-          "echo 'now deploying to production'"
+          set NODE_ENV=production
+          echo 'now deploying to production'
 
       - name: Faked Deploy to Test Server
         if: ${{ github.ref != 'refs/heads/main' }}
         run: |
-          "set NODE_ENV=development"
-          "echo 'now deploying branch: ${{ github.ref }} to the test server'"
+          set NODE_ENV=development
+          echo "now deploying branch: ${{ github.ref }} to the test server"
