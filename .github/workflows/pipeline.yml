@@ -16,6 +16,10 @@ jobs:
       - name: Run unit tests
         run: npm test
 
+      - name: Test Reporter
+        uses: dorny/test-reporter@v1.6.0
+
+
   linting:
     runs-on: ubuntu-latest
 
