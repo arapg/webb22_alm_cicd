@@ -36,10 +36,14 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Faked Deploy
+      - name: Faked Deploy to Main
+        if: ${{ github.ref == 'refs/heads/main' }}
         run: |
-          if [[ ${{ github.ref }} == 'refs/heads/main' ]]; then
-            echo "now deploying to production"
-          else
-            echo "now deploying branch: ${{ github.ref }} to the test server"
-          fi
+          "set NODE_ENV=production"
+          "echo 'now deploying to production'"
+
+      - name: Faked Deploy to Test Server
+        if: ${{ github.ref != 'refs/heads/main' }}
+        run: |
+          "set NODE_ENV=development"
+          "echo 'now deploying branch: ${{ github.ref }} to the test server'"
