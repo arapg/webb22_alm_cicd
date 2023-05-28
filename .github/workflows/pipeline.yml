@@ -18,6 +18,11 @@ jobs:
 
       - name: Test Reporter
         uses: dorny/test-reporter@v1.6.0
+        if: success() || failure()
+        with:
+          name: Mocha Tests
+          path: "**/test-results.json"
+          reporter: mocha-json
 
 
   linting:
