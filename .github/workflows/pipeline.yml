@@ -6,6 +6,11 @@ jobs:
   unit-tests:
     runs-on: ubuntu-latest
 
+    permissions:
+      contents: read
+      packages: write
+      checks: write
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
@@ -16,13 +21,17 @@ jobs:
       - name: Run unit tests
         run: npm test
 
+      - name: Check testing coverage
+        run: npm run check-coverage
+
       - name: Test Reporter
         uses: dorny/test-reporter@v1.6.0
         if: success() || failure()
         with:
           name: Mocha Tests
-          path: "**/test-results.json"
+          path: test-results.json
           reporter: mocha-json
+          fail-on-error: true
 
 
   linting:
