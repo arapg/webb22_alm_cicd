@@ -7,7 +7,7 @@
     "lint-fix": "eslint --fix .",
     "lint": "eslint .",
     "prepare": "husky install",
-    "test": "nyc --check-coverage --lines 35 mocha --recursive"
+    "test": "nyc --check-coverage --lines 35 mocha --recursive --reporter json > test-results.json"
   },
   "dependencies": {
     "cookie-parser": "~1.4.4",
